@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menuLinks.forEach(link => {
         link.addEventListener("click", function(event) {
-            event.preventDefault(); // Menghentikan default behavior
+            event.preventDefault(); 
 
-            // Mengambil target dari href
+          
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                // Menggeser scroll ke bagian yang dituju
+             
                 window.scrollTo({
                     top: targetSection.offsetTop,
                     behavior: "smooth"
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Mendeteksi scrolling
+
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('nav');
         const isTop = window.scrollY < nav.offsetHeight;
