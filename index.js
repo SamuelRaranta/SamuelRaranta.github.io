@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const menu = document.querySelector("nav");
     const menuLinks = document.querySelectorAll("nav ul li a");
+
+    // Mengaktifkan event listener saat menekan link menu
     menuLinks.forEach(link => {
         link.addEventListener("click", function(event) {
             event.preventDefault();
