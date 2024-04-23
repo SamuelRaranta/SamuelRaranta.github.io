@@ -1,14 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const menu = document.querySelector("nav");
-    const menuLinks = document.querySelectorAll("nav ul li a");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuLinks = document.querySelectorAll('nav a');
 
-    // Mengaktifkan event listener saat menekan link menu
     menuLinks.forEach(link => {
         link.addEventListener("click", function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Menghentikan default behavior
+
+            // Mengambil target dari href
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
-            targetSection.scrollIntoView({ behavior: "smooth" });
+
+            if (targetSection) {
+                // Menggeser scroll ke bagian yang dituju
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: "smooth"
+                });
+            }
         });
+    });
+
+    // Mendeteksi scrolling
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        const isTop = window.scrollY < nav.offsetHeight;
+
+        if (isTop) {
+            nav.classList.remove('sticky');
+        } else {
+            nav.classList.add('sticky');
+        }
     });
 });
